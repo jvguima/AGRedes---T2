@@ -1,0 +1,14 @@
+ifconfig eth0 10.0.4.2 netmask 255.255.255.0 up
+ifconfig eth1 10.0.4.3 netmask 255.255.255.0 up
+
+#Ativar ROUTING
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+#DEFAULT
+route add default 10.0.4.1 dev eth0
+
+#Reiniciar syslog para carregar novos arquivos
+/etc/init.d/sysklogd restart
+
+#Reiniciar o snmp
+/etc/init.d/snmpd restart

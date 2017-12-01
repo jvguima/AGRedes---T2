@@ -1,0 +1,15 @@
+ifconfig eth0 10.0.1.2 netmask 255.255.255.0 up
+
+#ROTEAMENTO
+route add default gw 10.0.1.1 dev eth0
+
+
+#LAMP
+/etc/init.d/mysql restart
+/etc/init.d/apache2 restart
+
+#Reiniciar syslog para carregar novos arquivos
+/etc/init.d/sysklogd restart
+
+#Reiniciar o snmp
+/etc/init.d/snmpd restart

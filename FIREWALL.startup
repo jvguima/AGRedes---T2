@@ -1,0 +1,50 @@
+ifconfig eth0 192.168.2.1 netmask 255.255.0.0 up
+ifconfig eth1 10.0.0.1 netmask 255.255.255.0 up
+
+
+#ROTEAMENTO
+echo 1 > /proc/sys/net/ipv4/ip_forward
+route add default gw 192.168.1.1 dev eth0
+route add -net 10.0.0.0 netmask 255.0.0.0 gw 10.0.0.2 dev eth1
+
+#FIREWALL-----------------------------------------------------------------------
+#Limpa todas as tabelas
+iptables -F
+iptables -t nat -F
+iptables -t mangle -F
+
+
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+iptables -P FORWARD DROP
+
+#Aceitar pacotes destinados ao SERVIDOR HTTP CHEGANDO em eth0
+#e sendo redirecionados para eth1
+
+iptables -A INPUT -i eth0 -p tcp --dport 80 -j ACCEPT
+iptables -A FORWARD -i eht0 -p tcp --dport 80 -j ACCEPT
+iptables -A OUTPUT -o eth1 -p tcp --dport 80 -j ACCEPT
+
+
+
+#Aceitar pacotes destinados para fora da rede interna
+#Chegando em eth1 e sendo redirecionados para eth0
+
+iptables -A INPUT -i eth1 -p tcp -j ACCEPT
+iptables -A FORWARD -i eht1 -p tcp  -j ACCEPT
+iptables -A OUTPT -o eth0 -p tcp -j ACCEPT
+
+
+#Permite a saida de pacotes da rede interna
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
+#HTTP enviado ao servidor
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to 10.0.1.2
+
+
+#OUTROS -----------------------------------------------------------------------
+#Reiniciar syslog para carregar novos arquivos
+/etc/init.d/sysklogd restart
+
+#Reiniciar o snmp
+/etc/init.d/snmpd restart

@@ -1,0 +1,10 @@
+ifconfig eth0 10.0.2.2 netmask 255.255.255.0 up
+
+#ROTEAMENTO
+route add default gw 10.0.2.1 dev eth0
+
+#Reiniciar syslog para carregar novos arquivos
+/etc/init.d/sysklogd restart
+
+#Reiniciar o snmp
+/etc/init.d/snmpd restart
