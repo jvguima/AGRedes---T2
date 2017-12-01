@@ -22,7 +22,7 @@ iptables -P FORWARD DROP
 #e sendo redirecionados para eth1
 
 iptables -A INPUT -i eth0 -p tcp --dport 80 -j ACCEPT
-iptables -A FORWARD -i eht0 -p tcp --dport 80 -j ACCEPT
+iptables -A FORWARD -i eth0 -p tcp --dport 80 -j ACCEPT
 iptables -A OUTPUT -o eth1 -p tcp --dport 80 -j ACCEPT
 
 
@@ -31,7 +31,7 @@ iptables -A OUTPUT -o eth1 -p tcp --dport 80 -j ACCEPT
 #Chegando em eth1 e sendo redirecionados para eth0
 
 iptables -A INPUT -i eth1 -p tcp -j ACCEPT
-iptables -A FORWARD -i eht1 -p tcp  -j ACCEPT
+iptables -A FORWARD -i eth1 -p tcp  -j ACCEPT
 iptables -A OUTPT -o eth0 -p tcp -j ACCEPT
 
 
