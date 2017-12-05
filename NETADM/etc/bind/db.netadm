@@ -1,0 +1,14 @@
+$TTL    60000
+@               IN      SOA     NETADM.netadm.    root.NETADM.netadm. (
+                        2006031201 ; serial
+                        28 ; refresh
+                        14 ; retry
+                        3600000 ; expire
+                        0 ; negative cache ttl
+                        )
+@               IN      NS      NETADM.netadm.
+netadm   	IN      A       10.0.2.1
+
+netadm		IN	A	10.0.2.2
+
+

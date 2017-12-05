@@ -35,6 +35,16 @@ iptables -A FORWARD -i eth1 -p tcp  -j ACCEPT
 iptables -A OUTPT -o eth0 -p tcp -j ACCEPT
 
 
+#Permitir ICMP/Ping entre INTERNET e FIREWALL
+iptables -A INPUT -i eth0 -p icmp -j ACCEPT
+iptables -A OUTPUT -o eth0 -p icmp -j ACCEPT
+
+
+#Permitir ICMP/PIng entre a rede interna e FIREWALL
+iptables -A INPUT -i eth1 -p icmp -j ACCEPT
+iptables -A OUTPUT -o eth1 -p icmp -j ACCEPT
+
+
 #Permite a saida de pacotes da rede interna
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 

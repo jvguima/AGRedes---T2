@@ -1,0 +1,28 @@
+$TTL    60000
+@               IN      SOA     ROTEADOR2.maximaonline.    root.ROTEADOR2.maximaonline. (
+                        2006031201 ; serial
+                        28 ; refresh
+                        14 ; retry
+                        3600000 ; expire
+                        0 ; negative cache ttl
+                        )
+@               IN      NS      ROTEADOR2.maximaonline.
+maximaonline   	IN      A       10.0.3.1
+
+vendas1      	IN      A       10.0.5.2
+vendas2      	IN      A       10.0.5.3
+vendas3      	IN      A       10.0.5.4
+printer1      	IN      A       10.0.5.5
+financeiro1	IN	A	10.0.6.2
+financeiro2	IN	A	10.0.6.3
+diretor		IN	A	10.0.6.4
+printer2	IN	A	10.0.6.5
+compras1	IN	A	10.0.7.2
+compras2	IN	A	10.0.7.3
+storage1	IN	A	10.0.7.4
+storage2	IN	A	10.0.7.5
+suporte1	IN	A	10.0.8.2
+suporte2	IN	A	10.0.8.3
+suporte3	IN	A	10.0.8.4
+suporte4	IN	A	10.0.8.5
+

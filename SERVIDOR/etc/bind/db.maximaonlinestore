@@ -1,0 +1,12 @@
+$TTL    60000
+@               IN      SOA     SERVIDOR.maximaonlinestore.    root.SERVIDOR.maximaonlinestore. (
+                        2006031201 ; serial
+                        28 ; refresh
+                        14 ; retry
+                        3600000 ; expire
+                        0 ; negative cache ttl
+                        )
+@               IN      NS      SERVIDOR.maximaonlinestore.
+maximaonlinestore   	IN      A       10.0.1.2
+
+

@@ -25,3 +25,6 @@ route add default gw 10.0.0.1 dev eth0
 
 #Reiniciar o snmp
 /etc/init.d/snmpd restart
+
+#Reiniciar o bind
+/etc/init.d/bind restart

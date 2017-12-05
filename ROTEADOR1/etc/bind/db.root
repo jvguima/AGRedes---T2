@@ -1,0 +1,20 @@
+$TTL   60000
+@               IN      SOA     ROOT-SERVER.    root.ROOT-SERVER. (
+                        2006031201 ; serial
+                        28800 ; refresh
+                        14400 ; retry
+                        3600000 ; expire
+                        0 ; negative cache ttl
+                        )
+
+@               IN      NS      ROOT-SERVER.
+ROOT-SERVER.	IN	A	10.0.0.2
+
+maximaonline.	IN	NS	ROTEADOR2.maximaonline
+ROTEADOR2.maximaonline.	IN 	A	10.0.3.1
+
+netadm.		IN	NS	NETADM.netadm
+NETADM.netadm.	IN 	A	10.0.2.2
+
+maximaonlinestore.	IN	NS	SERVIDOR.maximaonlinestore
+SERVIDOR.maximaonlinestore.	IN 	A	10.0.1.2
